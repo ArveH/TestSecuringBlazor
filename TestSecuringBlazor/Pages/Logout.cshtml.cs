@@ -23,5 +23,19 @@ namespace TestSecuringBlazor.Pages
                 OpenIdConnectDefaults.AuthenticationScheme,
                 CookieAuthenticationDefaults.AuthenticationScheme);
         }
+
+        public async Task<IActionResult> OnPostAsync()
+        {
+            Console.WriteLine("**** Logout: Inside POST");
+            await Task.CompletedTask;
+
+            return SignOut(
+                new AuthenticationProperties
+                {
+                    RedirectUri = "https://localhost:44388"
+                },
+                OpenIdConnectDefaults.AuthenticationScheme,
+                CookieAuthenticationDefaults.AuthenticationScheme);
+        }
     }
 }
