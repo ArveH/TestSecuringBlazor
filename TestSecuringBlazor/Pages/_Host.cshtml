@@ -4,6 +4,7 @@
 @{
     Layout = null;
 }
+@inject Microsoft.AspNetCore.Antiforgery.IAntiforgery Xsrf;
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,8 +17,15 @@
     <link href="css/site.css" rel="stylesheet" />
 </head>
 <body>
+    @{
+        var tokens = new InitialApplicationState
+        {
+            XsrfToken = Xsrf.GetAndStoreTokens(HttpContext).RequestToken
+        };
+    }
     <app>
-        <component type="typeof(App)" render-mode="ServerPrerendered" />
+        <component type="typeof(App)" render-mode="ServerPrerendered" 
+                   param-InitialState="tokens"/>
     </app>
 
     <div id="blazor-error-ui">

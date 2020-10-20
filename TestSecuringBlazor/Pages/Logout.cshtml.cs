@@ -26,8 +26,7 @@ namespace TestSecuringBlazor.Pages
 
         public async Task<IActionResult> OnPostAsync()
         {
-            Console.WriteLine("**** Logout: Inside POST");
-            await Task.CompletedTask;
+            await Task.CompletedTask; // just to remove warning
 
             return SignOut(
                 new AuthenticationProperties

@@ -1,4 +1,6 @@
-﻿<div class="top-row pl-4 navbar navbar-dark">
+﻿@inject TokenProvider TokenProvider
+
+<div class="top-row pl-4 navbar navbar-dark">
     <a class="navbar-brand" href="">TestSecuringBlazor</a>
     <button class="navbar-toggler" @onclick="ToggleNavMenu">
         <span class="navbar-toggler-icon"></span>
@@ -34,8 +36,8 @@
                         <NavLink class="nav-link" href="logout" onclick="this.closest('form').submit();return false;">
                             <span class="oi oi-list-rich" aria-hidden="true"></span> Logout (POST)
                         </NavLink>
-                        @*<input name="__RequestVerificationToken" type="hidden"
-            value="@TokenProvider.XsrfToken" />*@
+                        <input name="__RequestVerificationToken" type="hidden"
+                               value="@TokenProvider.XsrfToken" />
                     </form>
                 </li>
             </Authorized>
